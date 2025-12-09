@@ -62,6 +62,8 @@ func placeSprite(s *sprite, env [][]tile) ([][]tile, error){ // ooooh this is go
 	return env, nil
 }
 
+// add collision func (including adjacency and not just intersection)
+
 /*func main() {
 	var test_env = createEnvironment(6, 6, ".")
 	renderEnvironment(test_env)
