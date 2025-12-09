@@ -20,6 +20,10 @@ type tile struct {
 	parent *sprite
 }
 
+func (spr *sprite) scale(factor float64) {
+	spr.something *= factor
+}
+
 func createEnvironment(x, y int, background string) [][]tile {
 	env := make([][]tile, y)
 	for i:=0; i<y; i++ {
@@ -58,7 +62,7 @@ func placeSprite(s *sprite, env [][]tile) ([][]tile, error){
 	return env, nil
 }
 
-func main() {
+/*func main() {
 	var test_env = createEnvironment(6, 6, ".")
 	renderEnvironment(test_env)
 	fmt.Println()
@@ -77,4 +81,4 @@ func main() {
 	} else {
 		renderEnvironment(updated_env)
 	}
-}
+}*/
