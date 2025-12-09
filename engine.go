@@ -20,9 +20,9 @@ type tile struct {
 	parent *sprite
 }
 
-func (spr *sprite) scale(factor float64) {
-	spr.something *= factor
-}
+//func (spr *sprite) scale(factor float64) {
+//	spr.something *= factor
+//}
 
 func createEnvironment(x, y int, background string) [][]tile {
 	env := make([][]tile, y)
