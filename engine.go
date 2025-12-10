@@ -44,7 +44,7 @@ func renderEnvironment(env [][]tile) { //simple iterate through 2D list and outp
 	}
 }
 
-func placeSprite(s *sprite, env [][]tile) ([][]tile, error){ // ooooh this is gonna take some explaining
+func placeSprite(s *sprite, env [][]tile) ([][]tile, error) { // ooooh this is gonna take some explaining
 	if s.x < 0 || s.y < 0 || s.y >= len(env) || s.x >= len(env[0]) { // checks if the sprite's top left coordinates are out of bounds
 		return nil, fmt.Errorf("sprite position out of bounds") // return error and nil
 	}
@@ -62,7 +62,41 @@ func placeSprite(s *sprite, env [][]tile) ([][]tile, error){ // ooooh this is go
 	return env, nil
 }
 
-// add collision func (including adjacency and not just intersection)
+// add collision func (intersection)
+func collision(s1 *sprite, s2 *sprite) (bool, error) {
+	for _, coord1 := range s1.coords { // iterate through sprite 1 coords
+		x1 := s1.x + coord1[0]
+		y1 := s1.y + coord1[1]
+		for _, coord2 := range s2.coords { // iterate through sprite 2 coords for each sprite 1 coord
+			x2 := s2.x + coord2[0]
+			y2 := s2.y + coord2[1]
+			if x1 == x2 && y1 == y2 { // if any coords intersect
+				return true, nil
+			}
+		}
+	}
+	return false, nil
+}
+
+func adjacent(s1 *sprite, s2 *sprite) (bool, error) {
+	directions := [][]int{
+		{0, -1}, // up
+		{0, 1},  // down
+		{-1, 0}, // left
+		{1, 0},  // right
+	}
+	for _, coord1 := range s1.coords {
+		x1 := s1.x + coord1[0]
+		y1 := s1.y + coord1[1]
+		for _, coord2 := range s2.coords {
+			x2 := s2.x + coord2[0]
+			y2 := s2.y + coord2[1]
+			for _, dir := range directions {
+				
+			}
+
+		}
+	}
 
 /*func main() {
 	var test_env = createEnvironment(6, 6, ".")
